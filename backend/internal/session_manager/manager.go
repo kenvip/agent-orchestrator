@@ -6759,7 +6759,7 @@ func (m *Manager) buildSpawnTexts(ctx context.Context, cfg ports.SpawnConfig, se
 	if cfg.Fork != nil {
 		// The lineage row is written after spawn returns, so name the
 		// original here; restores read it from the lineage.
-		ctx = withForkOrigin(ctx, cfg.Fork.SourceSessionID, cfg.Fork.SourceTitle, cfg.Fork.SourceWorkspace)
+		ctx = withForkOrigin(ctx, cfg.Fork.SourceSessionID, cfg.Fork.SourceTitle, cfg.Fork.SourceWorkspace, cfg.Fork.SeedDir != "")
 	}
 	systemPrompt, err = m.buildSystemPrompt(ctx, cfg.Kind, cfg.ProjectID, sessionID, cfg.RequestedOutput, domain.NormalizeSessionMode(cfg.RequestedMode) == domain.SessionModeChat)
 	if err != nil {
